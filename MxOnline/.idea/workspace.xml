@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a383bc89-c6d9-4d27-b679-e0ff21d86e9b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/courses/migrations/0002_auto_20180220_1836.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/utils/email_send.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/active_fail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/forgetpwd.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/password_reset.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/register.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/send_success.html" />
+    <list default="true" id="a383bc89-c6d9-4d27-b679-e0ff21d86e9b" name="Default" comment="complete base operation functions of users">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MxOnline/settings.py" afterPath="$PROJECT_DIR$/MxOnline/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MxOnline/urls.py" afterPath="$PROJECT_DIR$/MxOnline/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/users/forms.py" afterPath="$PROJECT_DIR$/apps/users/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/users/views.py" afterPath="$PROJECT_DIR$/apps/users/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/login.html" afterPath="$PROJECT_DIR$/templates/login.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/MxOnline/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="249">
-              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
                 <element signature="e#632#664#0" expanded="true" />
               </folding>
@@ -59,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/apps/users/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="275">
-              <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+              <caret line="28" column="60" lean-forward="false" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
               <folding>
                 <element signature="e#73#97#0" expanded="true" />
               </folding>
@@ -104,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/apps/utils/email_send.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-125">
-              <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+              <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
               <folding>
                 <element signature="e#74#99#0" expanded="true" />
               </folding>
@@ -289,7 +276,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -369,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519117714750</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="complete base operation functions of users">
+      <created>1519138843818</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1519138843818</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -383,13 +377,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39767054" sideWeight="0.5030349" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327787" sideWeight="0.50455236" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.327787" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.327787" sideWeight="0.49544764" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28072837" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="manage.py@MxOnline" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.327787" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -442,7 +435,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="complete logout function" />
     <MESSAGE value="improve base html" />
-    <option name="LAST_COMMIT_MESSAGE" value="improve base html" />
+    <MESSAGE value="complete base operation functions of users" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete base operation functions of users" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -808,7 +802,7 @@
     <entry file="file://$PROJECT_DIR$/apps/users/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
-          <caret line="28" column="60" lean-forward="true" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+          <caret line="28" column="60" lean-forward="false" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
           <folding>
             <element signature="e#73#97#0" expanded="true" />
           </folding>
@@ -818,7 +812,7 @@
     <entry file="file://$PROJECT_DIR$/MxOnline/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
-          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="e#632#664#0" expanded="true" />
           </folding>
@@ -836,7 +830,7 @@
     <entry file="file://$PROJECT_DIR$/apps/utils/email_send.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-125">
-          <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <caret line="34" column="23" lean-forward="false" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
           <folding>
             <element signature="e#74#99#0" expanded="true" />
           </folding>
