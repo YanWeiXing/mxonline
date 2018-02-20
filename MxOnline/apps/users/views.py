@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
 from django.views.generic.base import View
+from django.http import HttpResponseRedirect
 
 from .models import UserProfile
 from .forms import LoginForm
@@ -19,6 +20,13 @@ class CustomBackend(ModelBackend):
                 return user
         except Exception as e:
             return None
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        from django.urls.base import reverse
+        return  HttpResponseRedirect(reverse("index"))
 
 
 class LoginView(View):
