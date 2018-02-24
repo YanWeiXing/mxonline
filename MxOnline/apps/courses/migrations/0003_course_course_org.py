@@ -12,9 +12,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='course',
-            name='course_org',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.fields.CharField, to='organizations.Organization', verbose_name='课程机构'),
-        ),
+
     ]

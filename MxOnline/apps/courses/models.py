@@ -15,6 +15,8 @@ class Course(models.Model):
     learn_times = models.IntegerField(default=0, verbose_name='学习时长(分钟数)')
     students = models.IntegerField(default=0, verbose_name='学习人数')
     fav_nums = models.IntegerField(default=0, verbose_name='收藏人数')
+    category = models.CharField(max_length=20, verbose_name='课程类别', default='后端开发')
+    tag = models.CharField(max_length=10, verbose_name='课程标签', default='')
     image = models.ImageField(upload_to='courses/%Y/%m', verbose_name='封面图')
     click_nums = models.IntegerField(default=0, verbose_name='点击数')
     add_time = models.DateTimeField(default=datetime.now, verbose_name='上传时间')
@@ -22,6 +24,12 @@ class Course(models.Model):
     class Meta:
         verbose_name = '课程'
         verbose_name_plural = verbose_name
+
+    def get_chapter_nums(self):
+        return self.chapter_set.all().count()
+
+    def get_learn_user(self):
+        return self.usercourse_set.all()[:5]
 
     def __str__(self):
         return self.name

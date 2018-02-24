@@ -15,4 +15,14 @@ class Migration(migrations.Migration):
             name='category',
             field=models.CharField(choices=[('pxjg', '培训机构'), ('gx', '高校'), ('gr', '个人')], default='pxjg', max_length=20, verbose_name='机构类别'),
         ),
+        migrations.AddField(
+            model_name='organization',
+            name='course_nums',
+            field=models.IntegerField(default=0, verbose_name='课程数'),
+        ),
+        migrations.AddField(
+            model_name='organization',
+            name='students',
+            field=models.IntegerField(default=0, verbose_name='学习人数'),
+        ),
     ]

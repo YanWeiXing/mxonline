@@ -21,7 +21,6 @@ class OrgListView(View):
         if city_id:
             all_orgs = all_orgs.filter(city_id=int(city_id))
 
-
         # 类别筛选
         category = request.GET.get('ct', '')
         if category:
@@ -44,9 +43,7 @@ class OrgListView(View):
             page = 1
 
         p = Paginator(all_orgs, 3, request=request)
-
         orgs = p.page(page)
-
         return render(request, 'org-list.html', {
             'all_orgs':orgs,
             'all_cities':all_cities,
