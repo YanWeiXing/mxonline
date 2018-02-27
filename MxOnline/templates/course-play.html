@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}公开课视频信息 - 慕学在线网{% endblock %}
+{% block title %}{{ video.name }} - 慕学在线网{% endblock %}
 {% block head_css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/muke/base.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/muke/common-less.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/muke/course/learn-less.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/aui.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/mooc.css' %}" />
- <link rel="stylesheet" type="text/css" href="{% static 'css/muke/course/common-less.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/muke/course/common-less.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/video-js.min.css' %}">
+<style>
+        .video-js .vjs-big-play-button{
+            top: 50%;
+            left: 50%;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -17,38 +24,19 @@
 			<ul>
 				<li><a href="{% url 'index' %}">首页</a>></li>
                 <li><a href="{% url 'courses:list' %}">公开课程</a>></li>
-				<li><a href="{% url 'courses:course_detail' course.id %}">课程详情</a>></li>
-                <li>章节信息</li>
+				<li><a href="{% url 'courses:course_detail' course.id %}">{{ course.name }}</a>></li>
+                <li>{{ video.name }}</li>
 			</ul>
 		</div>
 	</div>
 </section>
 <div id="main">
-    <div class="course-infos">
-        <div class="w pr">
-            <div style="height: 15px" class="path">
-            </div>
-            <div class="hd">
-                <h2 class="l">{{ course.name }}</h2>
-            </div>
-            <div class="statics clearfix">
-                <div class="static-item ">
-                    <span class="meta-value"><strong>{{ course.get_degree_display }}</strong></span>
-                    <span class="meta">难度</span>
-                    <em></em>
-                </div>
-                <div class="static-item static-time">
-                    <span class="meta-value">{{ course.learn_times }}分钟</span>
-                    <span class="meta">时长</span>
-                    <em></em>
-                </div>
-                <div class="static-item">
-                    <span class="meta-value"><strong>{{ course.students }}</strong></span>
-                    <span class="meta">学习人数</span>
-                    <em></em>
-                </div>
-            </div>
-        </div>
+    <div style="width:1200px;height:675px; margin-left: 340px">
+        <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="1200"
+              poster="http://video-js.zencoder.com/oceans-clip.png"
+              data-setup="{}">
+            <source src="{{ video.url }}" type='video/mp4'>
+        </video>
     </div>
     <div class="course-info-main clearfix w has-progress">
 
@@ -62,7 +50,7 @@
                     </ul>
                 </div>
                 <div id="notice" class="clearfix">
-                    <div class="l"> <strong>课程公告:</strong> <a  href="javascript:void(0)">Spring的文档以及相关的jar文件已上传</a> </div>
+                    <div class="l"> <strong>课程公告:</strong> <a  href="javascript:void(0)">相关的jar文件已上传</a> </div>
                 </div>
 
                 <div class="mod-chapters">
@@ -73,18 +61,18 @@
                         </h3>
                         <ul class="video">
                             {% for video in chapter.get_video %}
-                            
+
                             <li>
                                 <a target="_blank" href='{% url "courses:video_play" video.id %}' class="J-media-item studyvideo">{{ video.name }} ({{ video.learn_times }})
                                     <i class="study-state"></i>
                                 </a>
                             </li>
                             {% endfor %}
-                            
+
                         </ul>
                     </div>
                     {% endfor %}
-                    
+
                 </div>
 
             </div>
@@ -95,7 +83,7 @@
                         <h4>资料下载</h4>
                         <ul class="downlist">
                             {% for file in resources %}
-                            
+
                             <li>
                                 <span ><i class="aui-iconfont aui-icon-file"></i>&nbsp;&nbsp;{{ file.name }}</span>
                                 <a href="{{ MEDIA_URL }}{{ file.download }}" class="downcode" target="_blank" download="" data-id="274" title="">下载</a>
@@ -136,7 +124,7 @@
                                 <!-- img 200 x 112 -->
                                 <ul class="other-list">
                                     {% for relat_course in relate_courses %}
-                                    
+
                                     <li class="curr">
                                         <a href="{% url 'courses:course_detail' relat_course.id %}" target="_blank">
                                             <img src="{{ MEDIA_URL }}{{ relat_course.image }}" alt="{{ relat_course.name }}">
@@ -144,7 +132,7 @@
                                         </a>
                                     </li>
                                     {% endfor %}
-                                    
+
                                 </ul>
                             </div>
                             <div class="cp-tab-pannel js-comp-tab-pannel" data-pannel="plan">
@@ -168,4 +156,7 @@
 
 </div>
 </div>
+{% endblock %}
+{% block tail_js %}
+<script src="{% static 'js/video.min.js' %}" type="text/javascript"></script>
 {% endblock %}
