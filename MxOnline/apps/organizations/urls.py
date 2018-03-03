@@ -4,7 +4,8 @@ __date__ = '2018/2/20 23:38'
 
 from django.urls import path
 from .views import (OrgListView, UserAskView, OrgHomeView, OrgCourseView,
-                    OrgDescView, OrgTeacherView, UserFavorateView)
+                    OrgDescView, OrgTeacherView, UserFavorateView, TeacherListView,
+                    TeacherDetailView)
 
 
 urlpatterns = [
@@ -17,6 +18,8 @@ urlpatterns = [
     path('desc/<int:org_id>', OrgDescView.as_view(), name='org_desc'),
     path('teacher/<int:org_id>', OrgTeacherView.as_view(), name='org_teacher'),
     path('user_fav/', UserFavorateView.as_view(), name='user_fav'),
+    path('teacher/list/', TeacherListView.as_view(), name='teacher_list'),
+    path('teacher/detail/<int:teacher_id>', TeacherDetailView.as_view(), name='teacher_detail'),
 ]
 
 app_name = 'organizations'
