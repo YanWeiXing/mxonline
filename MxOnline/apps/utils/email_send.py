@@ -25,10 +25,12 @@ def generate_random_str(random_length=8):
     return  str
 
 
-
 def send_verify_code(email, sent_type='register'):
     email_record = EmailVerifyRecord()
-    code = generate_random_str(16)
+    if sent_type == "update_email":
+        code = generate_random_str(4)
+    else:
+        code = generate_random_str(16)
     email_record.code = code
     email_record.email = email
     email_record.sent_type = sent_type
@@ -44,11 +46,16 @@ def send_verify_code(email, sent_type='register'):
         if send_status:
             pass
 
-
-
-    if sent_type == 'forget':
+    elif sent_type == 'forget':
         email_title = '慕学在线网重置密码链接'
         email_body = '请点击下面的链接重置你的密码：http://127.0.0.1:8000/reset/{0}'.format(code)
+        send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
+        if send_status:
+            pass
+
+    elif sent_type == 'update_email':
+        email_title = '慕学在线网邮箱修改验证码'
+        email_body = '你的邮箱验证码为：{0}'.format(code)
         send_status = send_mail(email_title, email_body, EMAIL_FROM, [email])
         if send_status:
             pass

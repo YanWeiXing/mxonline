@@ -42,7 +42,8 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', serve, {"document_root":MEDIA_ROOT}),
 
     # 课程机构URL路由集合
-    path('orgs/', include('organizations.urls', namespace='orgs')),
-    path('courses/', include('courses.urls', namespace='courses')),
+    path('org/', include('organizations.urls', namespace='orgs')),
+    path('course/', include('courses.urls', namespace='courses')),
+    path('users/', include('users.urls', namespace='users')),
 
 ]

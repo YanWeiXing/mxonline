@@ -1,5 +1,6 @@
 
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}首页{% endblock %}
 {% block content %}
@@ -445,4 +446,7 @@
 			</div>
 		</div>
 	</section>
+{% endblock %}
+{% block tail_js %}
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 {% endblock %}
