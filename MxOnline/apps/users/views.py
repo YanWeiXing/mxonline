@@ -6,9 +6,9 @@ from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
 from django.views.generic.base import View
 from django.http import HttpResponseRedirect, HttpResponse
-from django.urls.base import reverse
 from django.contrib.auth.hashers import make_password
 from pure_pagination import Paginator, PageNotAnInteger
+from django.urls.base import reverse
 
 from .models import UserProfile, EmailVerifyRecord
 from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UploadImageForm, UserInfoForm
@@ -17,6 +17,7 @@ from utils.mixin_utils import LoginRequiredMixin
 from operations.models import UserCourse, UserFavorite, UserMessage
 from organizations.models import Organization, Teacher
 from courses.models import Course
+from .models import Banner
 
 # Create your views here.
 
@@ -41,6 +42,7 @@ class LogoutView(View):
     """
     def get(self, request):
         logout(request)
+
         return HttpResponseRedirect(reverse("index"))
 
 
@@ -63,7 +65,7 @@ class LoginView(View):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return render(request, 'index.html')
+                    return HttpResponseRedirect(reverse("index"))
                 else:
                     return render(request, 'login.html', {"msg":"用户未激活"})
             else:
@@ -310,6 +312,10 @@ class MyMessageView(LoginRequiredMixin, View):
 
     def get(self, request):
         all_messages = UserMessage.objects.filter(user=request.user.id)
+        all_unread_messages = UserMessage.objects.filter(user=request.user.id, has_read=False)
+        for unread_message in all_unread_messages:
+            unread_message.has_read = True
+            unread_message.save()
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -319,4 +325,19 @@ class MyMessageView(LoginRequiredMixin, View):
         messages = p.page(page)
         return render(request, 'usercenter-message.html', {
             'all_messages':messages
+        })
+
+
+class IndexView(View):
+
+    def get(self, request):
+        all_banners = Banner.objects.all().order_by('index')
+        courses = Course.objects.filter(is_banner=False)[:6]
+        banner_courses = Course.objects.filter(is_banner=True)[:3]
+        orgs = Organization.objects.all()[:15]
+        return render(request, 'index.html', {
+            'all_banners':all_banners,
+            'courses':courses,
+            'banner_courses':banner_courses,
+            'orgs':orgs
         })

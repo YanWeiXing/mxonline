@@ -29,6 +29,7 @@ class Organization(models.Model):
     fav_nums = models.IntegerField(default=0, verbose_name='收藏人数')
     image = models.ImageField(upload_to='organizations/%Y/%m', verbose_name='机构封面图')
     address = models.CharField(max_length=150, verbose_name='机构地址')
+    tag = models.CharField(default='全国知名',max_length=10, verbose_name='机构标签')
     city = models.ForeignKey(CityDict, verbose_name='所在城市', on_delete='SET_NULL')
     students = models.IntegerField(default=0, verbose_name='学习人数')
     course_nums = models.IntegerField(default=0, verbose_name='课程数')

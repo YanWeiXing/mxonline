@@ -20,7 +20,7 @@ class UserProfile(AbstractUser):
 
     def get_unread_nums(self):
         from operations.models import UserMessage
-        return UserMessage.objects.filter(user=self.id).count()
+        return UserMessage.objects.filter(user=self.id, has_read=False).count()
 
     def __str__(self):
         return self.username
