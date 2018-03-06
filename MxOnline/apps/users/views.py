@@ -331,6 +331,7 @@ class MyMessageView(LoginRequiredMixin, View):
 class IndexView(View):
 
     def get(self, request):
+        print(1/0)
         all_banners = Banner.objects.all().order_by('index')
         courses = Course.objects.filter(is_banner=False)[:6]
         banner_courses = Course.objects.filter(is_banner=True)[:3]
@@ -341,3 +342,21 @@ class IndexView(View):
             'banner_courses':banner_courses,
             'orgs':orgs
         })
+
+
+def page_not_found(request, exception):
+    response = render(request, '404.html', {})
+    response.status_code = 404
+    return response
+
+
+def server_error(request):
+    response = render(request,'500.html', {})
+    response.status_code = 500
+    return response
+
+
+def permission_denied(request, exception):
+    response = render(request, '403.html', {})
+    response.status_code = 403
+    return response

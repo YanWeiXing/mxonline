@@ -23,6 +23,7 @@ from users.views import (LoginView, LogoutView, RegisterView, ActiveCodeView,
                          ForgetPWDView, ResetCodeView, ModifyPwdView, IndexView)
 from MxOnline.settings import MEDIA_ROOT
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
@@ -41,9 +42,19 @@ urlpatterns = [
     # 配置上传文件的处理
     re_path(r'^media/(?P<path>.*)$', serve, {"document_root":MEDIA_ROOT}),
 
+
     # 课程机构URL路由集合
     path('org/', include('organizations.urls', namespace='orgs')),
+
+    # 课程页面URL路由集合
     path('course/', include('courses.urls', namespace='courses')),
+
+    # 用户相关页面URL路由集合
     path('users/', include('users.urls', namespace='users')),
 
 ]
+
+# 错误页面
+handler404='users.views.page_not_found'
+handler500='users.views.server_error'
+handler403='users.views.permission_denied'

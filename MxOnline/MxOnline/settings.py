@@ -28,9 +28,10 @@ SECRET_KEY = 'r9#l*$&1^ttne#%pgqyaw&25=cu6d^)(e$lr)afj@gi&)#5@@q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
+if DEBUG is False:
+    ALLOWED_HOSTS = ['*']
+if DEBUG is True:
+    ALLOWED_HOSTS = []
 
 # Application definition
 AUTHENTICATION_BACKENDS = (
@@ -97,7 +98,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mxonline',
         'USER': 'root',
-        'PASSWORD':'yanwx@123456',
+        'PASSWORD':'123456',
         'HOST':'127.0.0.1'
     }
 }
@@ -145,11 +146,16 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 # TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
 
 EMAIL_HOST = "smtp.sina.cn"
 EMAIL_PORT = 25
 EMAIL_HOST_USER = "vicent_yan@sina.cn"
-EMAIL_HOST_PASSWORD = "ywx123456"
+EMAIL_HOST_PASSWORD = "123456"
 EMAIL_USE_TLS = False
 EMAIL_FROM = "vicent_yan@sina.cn"
