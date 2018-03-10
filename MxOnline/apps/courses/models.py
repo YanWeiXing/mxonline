@@ -1,16 +1,27 @@
 from datetime import datetime
 
 from django.db import models
+from DjangoUeditor.models import UEditorField
+
 
 from organizations.models import Organization, Teacher
 
 # Create your models here.
 class Course(models.Model):
 
-    course_org = models.ForeignKey(Organization, verbose_name="课程机构", on_delete=models.CASCADE, null=True, blank=True)
+    course_org = models.ForeignKey(
+        Organization, verbose_name="课程机构", on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=50, verbose_name="课程名")
     desc = models.CharField(max_length=300, verbose_name="课程描述")
-    detail = models.TextField(verbose_name="课程详情")
+    detail = UEditorField(
+        verbose_name="课程详情",
+        width=600,
+        height=300,
+        toolbars="full",
+        imagePath="courses/ueditor/",
+        filePath="courses/ueditor/",
+        default="")
+
     is_banner = models.BooleanField(default=False, verbose_name="是否轮播图")
     teacher = models.ForeignKey(Teacher, verbose_name="讲师", on_delete=models.CASCADE, null=True, blank=True)
     degree = models.CharField(max_length=10, choices=(('cj', '初级'),('zj', '中级'),('gj', '高级')))
@@ -40,6 +51,13 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BannerCourse(Course):
+    class Meta:
+        verbose_name = '轮播课程'
+        verbose_name_plural = verbose_name
+        proxy = True
 
 
 class Chapter(models.Model):

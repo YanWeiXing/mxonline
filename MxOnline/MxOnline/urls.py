@@ -27,16 +27,32 @@ from MxOnline.settings import MEDIA_ROOT
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
+
+    #首页路由
     path('', IndexView.as_view(), name='index'),
+
+    # 登录路由
     path('login/', LoginView.as_view(), name='login'),
+
+    # 登出路由
     path('logout/', LogoutView.as_view(), name='logout'),
+
+    # 注册路由
     path('register/', RegisterView.as_view(), name='register'),
 
     # 验证码路由
     path('captcha/', include('captcha.urls')),
+
+    # 邮箱激活码路由
     path('active/<active_code>', ActiveCodeView.as_view(), name='user_active'),
+
+    # 密码忘记处理路由
     path('forget/', ForgetPWDView.as_view(), name='forget_pwd'),
+
+    # 密码重置处理路由
     path('reset/<reset_code>', ResetCodeView.as_view(), name='reset_pwd'),
+
+    # 密码修改处理路由
     path('modify_pwd/', ModifyPwdView.as_view(), name='modify_pwd'),
 
     # 配置上传文件的处理
@@ -51,6 +67,9 @@ urlpatterns = [
 
     # 用户相关页面URL路由集合
     path('users/', include('users.urls', namespace='users')),
+
+    # 富文本相关URL
+    path('ueditor/', include('DjangoUeditor.urls')),
 
 ]
 

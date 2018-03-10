@@ -17,7 +17,7 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
-
+# 目录更改的重设置
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,7 +33,7 @@ if DEBUG is False:
 if DEBUG is True:
     ALLOWED_HOSTS = []
 
-# Application definition
+# 用户认证后台设置
 AUTHENTICATION_BACKENDS = (
     'users.views.CustomBackend',
 
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # app加载
     'users',
     'courses',
     'organizations',
@@ -53,10 +55,11 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'captcha',
-    'pure_pagination'
+    'pure_pagination',
+    'DjangoUeditor'
 ]
 
-AUTH_USER_MODEL = 'users.UserProfile'
+AUTH_USER_MODEL = 'users.UserProfile' #用户认证model的覆盖
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,7 +76,7 @@ ROOT_URLCONF = 'MxOnline.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,  'templates')],
+        'DIRS': [os.path.join(BASE_DIR,  'templates')],# 模板文件设置
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +84,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
+                'django.template.context_processors.media', # 用户上传文件在template模板的上下文关联
             ],
         },
     },
@@ -98,7 +101,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mxonline',
         'USER': 'root',
-        'PASSWORD':'123456',
+        'PASSWORD':'yanwx@123456',
         'HOST':'127.0.0.1'
     }
 }
@@ -126,9 +129,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'zh-Hans'
+LANGUAGE_CODE = 'zh-Hans' # 语言设置
 
-TIME_ZONE = 'Asia/Shanghai'
+TIME_ZONE = 'Asia/Shanghai' # 市区设置
 
 USE_I18N = True
 
@@ -141,21 +144,18 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),) # 静态文件目录设置
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 用户上传文件目录设置
 
-
-
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
 
+# 邮件发送的配置
 EMAIL_HOST = "smtp.sina.cn"
 EMAIL_PORT = 25
 EMAIL_HOST_USER = "vicent_yan@sina.cn"
-EMAIL_HOST_PASSWORD = "123456"
+EMAIL_HOST_PASSWORD = "ywx123456"
 EMAIL_USE_TLS = False
 EMAIL_FROM = "vicent_yan@sina.cn"

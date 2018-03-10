@@ -6,6 +6,9 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class UserProfile(AbstractUser):
+    """
+    继承django原有数据库，并自定义
+    """
 
     nick_name = models.CharField(max_length=50, verbose_name="昵称", default='')
     birthday = models.DateField(verbose_name='生日', null=True, blank=True)

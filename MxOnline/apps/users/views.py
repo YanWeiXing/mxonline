@@ -52,26 +52,26 @@ class LoginView(View):
     """
 
     def get(self, request):
-        return render(request, 'login.html', {})
+        return render(request, 'login.html', {}) # 渲染登录页面
 
     def post(self, request):
 
-        login_form = LoginForm(request.POST)
+        login_form = LoginForm(request.POST) # 登录表单加载
         if login_form.is_valid():
 
-            user_name = request.POST.get("username", "")
-            pass_word = request.POST.get("password", "")
-            user = authenticate(username=user_name, password=pass_word)
+            user_name = request.POST.get("username", "") # 取出前端输入用户名
+            pass_word = request.POST.get("password", "") # 取出前端输入密码
+            user = authenticate(username=user_name, password=pass_word) # 用户验证
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect(reverse("index"))
+                    return HttpResponseRedirect(reverse("index")) # 用户存在且已激活则进行正常登录并重定向到首页
                 else:
-                    return render(request, 'login.html', {"msg":"用户未激活"})
+                    return render(request, 'login.html', {"msg":"用户未激活"}) # 返回前端错误消息
             else:
-                return render(request, 'login.html', {"msg": "用户名或密码错误！"})
+                return render(request, 'login.html', {"msg": "用户名或密码错误！"}) # 返回前端错误消息
         else:
-            return render(request, 'login.html', {"login_form":login_form})
+            return render(request, 'login.html', {"login_form":login_form}) # 返回表单逻辑，由表单进行再处理
 
 
 
@@ -80,8 +80,8 @@ class RegisterView(View):
     用户注册功能
     """
     def get(self, request):
-        register_form = RegisterForm()
-        return render(request, 'register.html', {'register_form':register_form})
+
+        return render(request, 'register.html', {}) # 渲染注册页面
 
     def post(self, request):
         register_form = RegisterForm(request.POST)
@@ -331,7 +331,7 @@ class MyMessageView(LoginRequiredMixin, View):
 class IndexView(View):
 
     def get(self, request):
-        print(1/0)
+
         all_banners = Banner.objects.all().order_by('index')
         courses = Course.objects.filter(is_banner=False)[:6]
         banner_courses = Course.objects.filter(is_banner=True)[:3]

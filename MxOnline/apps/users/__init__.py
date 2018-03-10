@@ -1,1 +1,1 @@
-default_app_config = 'users.apps.UsersConfig'
+default_app_config = 'users.apps.UsersConfig' # 配置app配置
