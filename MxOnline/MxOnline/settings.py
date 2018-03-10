@@ -101,7 +101,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mxonline',
         'USER': 'root',
-        'PASSWORD':'yanwx@123456',
+        'PASSWORD':'',
         'HOST':'127.0.0.1'
     }
 }
@@ -156,6 +156,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 用户上传文件目录设置
 EMAIL_HOST = "smtp.sina.cn"
 EMAIL_PORT = 25
 EMAIL_HOST_USER = "vicent_yan@sina.cn"
-EMAIL_HOST_PASSWORD = "ywx123456"
+EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = False
 EMAIL_FROM = "vicent_yan@sina.cn"
